@@ -7,7 +7,6 @@ import solana from "./assets/solana.png";
 import tether from "./assets/tether.png";
 import xrp from "./assets/xrp.png";
 
-// Sample Data
 const initialAssets = [
 	{
 		id: 1,
@@ -81,7 +80,6 @@ const initialAssets = [
 	},
 ];
 
-// Redux Slice
 const assetSlice = createSlice({
 	name: "assets",
 	initialState: initialAssets,
@@ -107,14 +105,12 @@ const assetSlice = createSlice({
 const store = configureStore({ reducer: { assets: assetSlice.reducer } });
 const { updatePrices } = assetSlice.actions;
 
-// Helper for colored % changes
 const formatChange = (value) => (
 	<span className={value >= 0 ? "text-green-500" : "text-red-500"}>
 		{value}%
 	</span>
 );
 
-// Table Component
 const CryptoTable = () => {
 	const assets = useSelector((state) => state.assets);
 	const dispatch = useDispatch();
@@ -132,9 +128,7 @@ const CryptoTable = () => {
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Logo</th>
 						<th>Name</th>
-						<th>Symbol</th>
 						<th>Price</th>
 						<th>1h %</th>
 						<th>24h %</th>
@@ -149,11 +143,11 @@ const CryptoTable = () => {
 					{assets.map((asset, index) => (
 						<tr key={asset.id}>
 							<td>{index + 1}</td>
-							<td>
-								<img src={asset.logo} alt={asset.symbol} className="w-6 h-6" />
+							<td className="flex gap-1.5">
+								<img src={asset.logo} alt={asset.symbol} className="w-6 h-6 inline" />
+								<span className="font-semibold">{asset.name}</span>
+								<span className="opacity-50">{asset.symbol}</span>
 							</td>
-							<td>{asset.name}</td>
-							<td>{asset.symbol}</td>
 							<td>${asset.price.toLocaleString()}</td>
 							<td>{formatChange(asset.change1h)}</td>
 							<td>{formatChange(asset.change24h)}</td>
@@ -170,12 +164,11 @@ const CryptoTable = () => {
 	);
 };
 
-// App Component
 const App = () => (
 	<Provider store={store}>
 		<div className="min-h-screen bg-base-200">
 			<h1 className="text-4xl font-bold text-center p-4">
-				📊 Crypto Price Tracker
+				Crypto Price Tracker
 			</h1>
 			<CryptoTable />
 		</div>
