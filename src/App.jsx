@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { createSlice, configureStore } from "@reduxjs/toolkit";
+import bitcoin from "./assets/bitcoin.png";
+import etherium from "./assets/etherium.png";
+import solana from "./assets/solana.png";
+import tether from "./assets/tether.png";
+import xrp from "./assets/xrp.png";
 
 // Sample Data
 const initialAssets = [
 	{
 		id: 1,
-		logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+		logo: bitcoin,
 		name: "Bitcoin",
 		symbol: "BTC",
 		price: 93759.48,
@@ -20,7 +25,7 @@ const initialAssets = [
 	},
 	{
 		id: 2,
-		logo: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+		logo: etherium,
 		name: "Ethereum",
 		symbol: "ETH",
 		price: 1802.46,
@@ -34,7 +39,7 @@ const initialAssets = [
 	},
 	{
 		id: 3,
-		logo: "https://cryptologos.cc/logos/tether-usdt-logo.png",
+		logo: tether,
 		name: "Tether",
 		symbol: "USDT",
 		price: 1.0,
@@ -48,7 +53,7 @@ const initialAssets = [
 	},
 	{
 		id: 4,
-		logo: "https://cryptologos.cc/logos/xrp-xrp-logo.png",
+		logo: xrp,
 		name: "XRP",
 		symbol: "XRP",
 		price: 2.22,
@@ -62,21 +67,7 @@ const initialAssets = [
 	},
 	{
 		id: 5,
-		logo: "https://cryptologos.cc/logos/binance-coin-bnb-logo.png",
-		name: "BNB",
-		symbol: "BNB",
-		price: 606.65,
-		change1h: 0.09,
-		change24h: -1.2,
-		change7d: 3.73,
-		marketCap: 85471956947,
-		volume24h: 1874281784,
-		supply: "140.89M BNB",
-		chart: "📉",
-	},
-	{
-		id: 6,
-		logo: "https://cryptologos.cc/logos/solana-sol-logo.png",
+		logo: solana,
 		name: "Solana",
 		symbol: "SOL",
 		price: 151.51,
